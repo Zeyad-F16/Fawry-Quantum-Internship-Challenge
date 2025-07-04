@@ -1,53 +1,58 @@
-Fawry Quantum Internship Challenge
-This project is a simple E-commerce Checkout System written in Java as part of the Fawry Quantum Internship challenge. It handles common real-world shopping cart scenarios, including product management, cart operations, and the checkout process.
+# Fawry Quantum Internship Challenge
 
-🚀 Features
-Product Types:
+A simple **E-commerce Checkout System** built in **Java** for the Fawry Quantum Internship challenge.  
+This project simulates real-world scenarios of a shopping cart system — managing products, validating conditions, and completing the checkout process.
 
-Food: Includes expiry date and weight.
+---
 
-Electronics: Includes weight only.
+## 🚀 Features
 
-Digital Products: No shipping required.
+- **Product Types**:
+  - `Food`: Includes expiry date and weight.
+  - `Electronics`: Includes weight only.
+  - `Digital`: No shipping required.
 
-Shopping Cart:
+- **Interfaces**:
+  - `Expirable`: Implemented by food products.
+  - `Shippable`: Implemented by products requiring delivery.
 
-Add multiple items with quantities.
+- **Shopping Cart**:
+  - Add multiple items with specific quantities.
+  - Ensure sufficient quantity available before checkout.
 
-Validate stock availability.
+- **Checkout Logic**:
+  - Validate expiry dates (for food items).
+  - Calculate shipping for shippable products.
+  - Validate user balance before completing purchase.
+  - Print checkout receipt and shipping notice.
 
-Checkout Logic:
+---
 
-Verify food expiry.
+## 🧠 Project Structure
 
-Calculate shipping fees for shippable products.
-
-Check if the user has sufficient balance.
-
-Generate a detailed receipt and a shipping notice (if applicable).
-
-📁 Project Structure
+```
 Fawry-Quantum-Internship-Challenge/
 └── src/
-    ├── Main.java                       // Application entry point
+    ├── Main.java                       // Entry point
 
-    ├── interfaces/                    // Common behaviors
-    │   ├── Expirable.java              // Interface for expirable items (e.g., Food)
-    │   └── Shippable.java              // Interface for items requiring shipping
+    ├── interfaces/                    // Common behavior definitions
+    │   ├── Expirable.java              // For products with expiry (e.g., Food)
+    │   └── Shippable.java              // For products requiring shipping
 
-    ├── models/                        // Core domain models
-    │   ├── Product.java                // Abstract base class for all products
-    │   ├── Food.java                   // Food product with expiry and weight
-    │   ├── Electronic.java             // Electronic product with weight
-    │   ├── Digital.java                // Digital product (no shipping)
-    │   ├── Cart.java                   // Represents the shopping cart
-    │   ├── CartItem.java               // Holds product and quantity info
-    │   └── Customer.java               // Represents the customer (with balance)
+    ├── models/                        // Domain models
+    │   ├── Product.java                // Abstract base class
+    │   ├── Food.java                   // Expirable & Shippable
+    │   ├── Electronic.java             // Shippable
+    │   ├── Digital.java                // Non-shippable
+    │   ├── Cart.java                   // Represents the user's cart
+    │   ├── CartItem.java               // Product + Quantity
+    │   └── Customer.java               // Customer with balance
 
-    ├── services/                      // Business logic and operations
-    │   ├── CheckoutService.java        // Coordinates the full checkout process
-    │   ├── CheckExpirationDate.java    // Validates food product expiry
-    │   ├── CheckCustomerBalanceService.java // Verifies if customer has enough balance
-    │   ├── CalculationsForShippableProducts.java // Calculates shipping costs
-    │   ├── PrintCheckoutReceipt.java   // Prints a detailed checkout receipt
-    │   └── PrintShipmentNotice.java    // Prints shipping notice for shippable items
+    ├── services/                      // Business logic
+    │   ├── CheckoutService.java        // Handles full checkout flow
+    │   ├── CheckExpirationDate.java    // Validates expiration of food items
+    │   ├── CheckCustomerBalanceService.java // Ensures sufficient balance
+    │   ├── CalculationsForShippableProducts.java // Shipping cost calculator
+    │   ├── PrintCheckoutReceipt.java   // Displays receipt
+    │   └── PrintShipmentNotice.java    // Displays shipping notice
+```
